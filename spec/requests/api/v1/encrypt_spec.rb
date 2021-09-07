@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Encrypt' do
@@ -9,8 +11,9 @@ RSpec.describe 'Encrypt' do
     post "/api/v1/encrypt?message=#{word}&date=#{date}&key=#{key}"
     expect(response).to be_successful
     json = JSON.parse(response.body, symbolize_names: true)
-    message = json[:data][:attributes][:data][:message]
+    message = json[:data][:encrypted_message]
     expect(message).to be_a String
     expect(message.length).to eq(3)
+    expect(message).to_not eq(word)
   end
 end

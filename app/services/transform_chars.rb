@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TransformChars
   def self.all_characters
     alphabet = [*'a'..'z', *'A'..'Z']
@@ -19,9 +21,7 @@ class TransformChars
   def self.format_key(key)
     new_key = []
     key.chars.each.with_index do |number, index|
-      if index != key.length - 1
-        new_key << "#{number}#{key.chars[index + 1]}"
-      end
+      new_key << "#{number}#{key.chars[index + 1]}" if index != key.length - 1
     end
     new_key
   end
@@ -43,6 +43,6 @@ class TransformChars
   end
 
   def self.indecies_to_chars(indecies)
-    indecies.map { |index| all_characters[index % all_characters.length]}.join
+    indecies.map { |index| all_characters[index % all_characters.length] }.join
   end
 end

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     class EncryptController < ApplicationController
       def find
-        Enigma.encrypt(params)
+        render json: EnigmaSerializer.format_response(Enigma.encrypt(params))
       end
     end
   end

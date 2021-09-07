@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'TransformChars' do
   describe 'method' do
-
     it '#all_characters' do
       alphabet = [*'a'..'z', *'A'..'Z']
       all_chars = %w[! @ # $ % ^ & * ( ) ? , . : ;] + alphabet
@@ -14,7 +15,7 @@ RSpec.describe 'TransformChars' do
     it '#chars_to_indecies()' do
       word = 'Nope'
       expect(TransformChars.chars_to_indecies(word)).to eq([39, 14, 15, 4])
-      expect(TransformChars.chars_to_indecies(word + '!')).to eq([39, 14, 15, 4, 52])
+      expect(TransformChars.chars_to_indecies("#{word}!")).to eq([39, 14, 15, 4, 52])
     end
 
     it '#format_date()' do
