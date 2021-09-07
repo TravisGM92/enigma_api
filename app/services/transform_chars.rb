@@ -27,9 +27,11 @@ class TransformChars
   end
 
   def self.offsets(data)
+    key = format_key(data['key'])
+    date = format_date(data['date'])
     offsets = []
     4.times do |i|
-      offsets << data[:date_squared][i].to_i + data[:key][i].to_i
+      offsets << date[i].to_i + key[i].to_i
     end
     offsets
   end
@@ -44,5 +46,9 @@ class TransformChars
 
   def self.indecies_to_chars(indecies)
     indecies.map { |index| all_characters[index % all_characters.length] }.join
+  end
+
+  def self.transform_message(data)
+    indexed_message_offset({ indexed_message: chars_to_indecies(data['message']), offsets: offsets(data) })
   end
 end

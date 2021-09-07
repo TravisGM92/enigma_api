@@ -30,11 +30,9 @@ RSpec.describe 'TransformChars' do
     end
 
     it '#offsets()' do
-      date_squared = '9841'
-      key = %w[09 97 77 76]
       data = {
-        date_squared: date_squared,
-        key: key
+        'date' => '090721',
+        'key' => '09776'
       }
       expect(TransformChars.offsets(data)).to eq([18, 105, 81, 77])
     end
@@ -49,6 +47,10 @@ RSpec.describe 'TransformChars' do
 
     it '#indecies_to_chars()' do
       expect(TransformChars.indecies_to_chars([5, 2, 60, 5])).to eq('fc(f')
+    end
+
+    it '#transform_message()' do
+
     end
   end
 end
