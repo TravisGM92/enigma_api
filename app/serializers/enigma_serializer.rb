@@ -10,13 +10,12 @@ class EnigmaSerializer
       id: nil,
       type: 'enigma'
     }
-    if data[:status] == 'encrypted'
-      response[:data][:encrypted_message] =
-        data[:encrypted_message]
-    else
-      response[:data][:decrypted_message] =
-        data[:decrypted_message]
-    end
+    status_update(data, response)
+  end
+
+  def self.status_update(data, response)
+    data[:status] == 'encrypted' ? result = :encrypted_message : result = :decrypted_message
+    response[:data][result] = data[result]
     response
   end
 end

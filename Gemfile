@@ -45,7 +45,8 @@ group :development, :test do
   gem 'capybara'
   gem 'pry'
   gem 'rspec-rails'
-  gem 'rubocop'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec'
   gem 'shoulda-matchers', '~> 3.1'
 end
 
@@ -53,6 +54,10 @@ group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
+end
+
+group :test do
+  gem 'simplecov'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

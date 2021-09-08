@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'TransformChars' do
   describe 'method' do
     it '#all_characters' do
-      alphabet = [*'a'..'z', *'A'..'Z']
+      alphabet = [*'a'..'z', *'A'..'Z', ' ']
       all_chars = %w[! @ # $ % ^ & * ( ) ? , . : ;] + alphabet
       all_chars.each do |character|
         expect(TransformChars.all_characters.include?(character)).to be_truthy
@@ -50,7 +50,15 @@ RSpec.describe 'TransformChars' do
     end
 
     it '#transform_message()' do
-
+      data = {
+        'date' => '090821',
+        'key' => '44098',
+        'message' => 'hey'
+      }
+      transformed = TransformChars.transform_message(data)
+      expect(transformed).to be_an Array
+      expect(transformed.length).to eq(3)
+      transformed.each { |element| expect(element).to be_an Integer }
     end
   end
 end

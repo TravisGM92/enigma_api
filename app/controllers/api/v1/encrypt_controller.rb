@@ -4,7 +4,7 @@ module Api
   module V1
     class EncryptController < ApplicationController
       def find
-        render json: EnigmaSerializer.format_response(Enigma.encrypt(params))
+        render json: EnigmaSerializer.format_response(Enigma.transform(params))
       end
     end
   end
